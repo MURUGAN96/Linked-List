@@ -31,14 +31,20 @@ class LinkedList {
     if (this.tail.value == value) this.tail = currentNode;
   }
 
-  insertAfter(value, nextValue) {}
+  insertAfter(value, node) {
+    let elementNode = this.find(node)
+    if(elementNode){
+      let currenNode = {value:value,next:elementNode.next}
+      elementNode.next = currenNode.next;
+    }
+  }
 
   find(value) {
     if (!head) return;
     let curNode = this.head;
     while (curNode) {
       if (curNode.value == value) return curNode;
-      else curNode = curNode.next;
+      curNode = curNode.next;
     }
   }
   formatArray() {
@@ -61,7 +67,7 @@ myList.delete(1);
 
 console.log(myList.formatArray());
 
-console.log(myList.find('Linked List'));
+// console.log(myList.find('Linked List'));
 // Write Javascript code!
 const appDiv = document.getElementById('app');
 appDiv.innerHTML = `<h1>Linked List</h1>`;
