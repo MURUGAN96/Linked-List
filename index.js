@@ -20,6 +20,27 @@ class LinkedList {
     if (!this.tail) this.tail = firstNode;
   }
 
+  delete(value) {
+    if (!this.head) return;
+    if (this.head.value == value) this.head = this.head.next;
+    let currentNode = this.head;
+    while (currentNode.next) {
+      if (currentNode.next.value == value) currentNode.next.next;
+      else currentNode = currentNode.next;
+    }
+    if (this.tail.value == value) this.tail = currentNode;
+  }
+
+  insertAfter(value, nextValue) {}
+
+  find(value) {
+    if (!head) return;
+    let curNode = this.head;
+    while (curNode) {
+      if (curNode.value == value) return curNode;
+      else curNode = curNode.next;
+    }
+  }
   formatArray() {
     const elements = [];
     let currentNode = this.head;
@@ -32,11 +53,15 @@ class LinkedList {
 }
 
 const myList = new LinkedList();
-// myList.append(1);
-// myList.append('Linked List');
+myList.append(1);
+myList.append('Linked List');
 myList.prepend('first List');
+myList.prepend('second List');
+myList.delete(1);
+
 console.log(myList.formatArray());
 
+console.log(myList.find('Linked List'));
 // Write Javascript code!
 const appDiv = document.getElementById('app');
 appDiv.innerHTML = `<h1>Linked List</h1>`;
